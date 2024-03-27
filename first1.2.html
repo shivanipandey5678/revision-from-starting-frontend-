@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <title>Document</title>
+    <style>
+       body{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Poppins;
+       }
+        #container{
+            display: grid;
+           
+             gap: 2%;
+             width: 80%;
+           
+           margin: 0 auto;
+           grid-template-columns: repeat(4,1fr);
+         
+        }
+        .inner-container{
+            display: flex;
+            flex-direction: column;
+            /* box-shadow: 5px 5px 5px rgba(0,0,0,0.1); */
+            box-shadow: 2px -4px 5px 5px rgba(0,0,0,0.2);
+            max-width: 350px;
+            align-items: center;
+            height: min-content;
+            border-radius: 9px;
+          
+        }
+        .inner-container img{
+            width: 100%;
+        }
+        h1{
+            text-align: center;
+            font-size: xx-large;
+            font-weight: 700;
+        }
+    
+        p{
+            margin: 0;
+            padding: 0;
+            padding-top: 5px;
+        }
+        .inner-container img:last-of-type {
+    height: 48px;
+    width: 140px;
+    padding: 0px 60px;
+}
+#containerofcompany{
+    width: 80%;
+ 
+    display: flex;
+    margin: 0 auto;
+ 
+}
+#heaadercontainer{
+    padding: 30px;
+}
+@media screen and (max-width:1000px){
+    #container{
+        grid-template-columns: repeat(3,1fr);
+        gap: 2%;
+         width: 80%;
+         margin: 0 auto;
+         
+    }
+   
+}
+
+
+      
+    </style>
+</head>
+<body>
+    <div id="heaadercontainer">
+        <h1>Board Members</h1>
+        <div id="containerofcompany">
+            <img src="https://www.masaischool.com/images/our-investors/india-q-borderless.svg" alt="">
+            <img src="https://www.masaischool.com/images/our-investors/capria-logo.svg" alt="">
+            <img src="https://www.masaischool.com/images/our-investors/omidyar-borderless.svg" alt="">
+           
+        </div>
+    </div>  
+    <h1>strategic Inventors</h1>
+    <div id="container">
+        <div class="inner-container">
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Vijay_Shekhar_Sharma_Paytm_96f52579b8.jpg" alt="">
+            <p><b>Vijay Shekhar Sharma</b></p>
+            <p>Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/paytm_rect_06df45a24f.svg" alt="" >
+        </div>
+
+        <div class="inner-container">
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Rectangle_427_637d69bb57.png" alt="">
+            <p><b>Kunal Shah</b></p>
+            <p>Founder </p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/cred_0a47d7b4f8.png" alt="">
+        </div>
+
+        <div class="inner-container">
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/amrish_rau_pine_labs_144e5e587c.jpg" alt="">
+            <p><b>Amrish Rau</b></p>
+            <p> CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/pine_labs_0aa2407434.png" alt="">
+        </div>
+
+        <div class="inner-container">
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/Sampad_swain_Instamojo_f12bf6341e.jpg" alt="">
+            <p><b>Sampad Swain</b></p>
+            <p>Co-Founder & CEO</p>
+            <img src="https://masai-website-images.s3.ap-south-1.amazonaws.com/instamojo_8763e704f7.png" alt="">
+        </div>
+
+       
+
+       
+
+       
+
+        
+    </div>
+
+</body>
+</html>
