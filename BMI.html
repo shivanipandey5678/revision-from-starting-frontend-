@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Check your BMI</h2>
+    <h3>Enter your weight and height below to check your BMI result</h3>
+    <h3>Put your weight here in (KG)</h3>
+  
+    <input type="number" id="wg">
+   
+    <h3>And your height in here (CM)</h3>
+ 
+    <input type="number" id="height">
+    <button style="display: block;" id="btn">Calculate BMI</button>
+
+    <h3 id="result"></h3>
+
+</body>
+<script>
+     let btn=document.getElementById("btn")
+     let wg=document.getElementById("wg");
+ 
+     let hg=document.getElementById("height");
+    let result=document.getElementById("result");
+   
+  
+    
+
+    btn.addEventListener("click", function() {
+    let wgvalue = parseFloat(wg.value);
+    let hgvalue = parseFloat(hg.value);
+    let hgmeter = hgvalue / 100;
+    let hg_square = hgmeter * hgmeter;
+    let bmi = wgvalue / hg_square;
+    let roundedBMI = bmi.toFixed(1);
+    let category = "";
+    if (roundedBMI <= 18.4) {
+        category = "Underweight";
+    } else if (roundedBMI >= 18.5 && roundedBMI <= 24.9) {
+        category = "Normal weight";
+    } else if (roundedBMI >= 25 && roundedBMI <= 29.9) {
+        category = "Overweight";
+    } else {
+        category = "Obese";
+    }
+    result.innerText = `Your BMI is ${roundedBMI}, which means you are ${category}.`;
+});
+
+    
+    
+</script>
+</html>
