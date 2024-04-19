@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <style>
+        #slider_container{
+            display: flex;
+            width: 100%;
+            margin: auto;
+            align-items: center;
+            height: 300px;
+
+          
+            justify-content: center;
+        
+           }
+
+           #slider_container>img{
+            height: 100%;
+            width: 25%;
+           
+           }
+           #left,#right{
+            padding: 7px;
+            border-radius: 50%;
+            background-color: rgb(170, 154, 154);
+            color: white;
+           }
+    </style>
+    <title>slider</title>
+</head>
+<body>
+    <div id="slider_container">
+            <span class="material-symbols-outlined" id="left">
+                chevron_left
+                </span>
+            <img src="https://images.unsplash.com/photo-1444464666168-49d633b86797?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxfHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400" alt="" id="current_photo">
+            <span class="material-symbols-outlined" id="right">
+                chevron_right
+            </span>
+            <button id="start_stop_slide" onclick="slide()">sliding show start/stop</button>
+    </div>
+    
+</body>
+<script>
+    arr=[
+        "https://images.unsplash.com/photo-1444464666168-49d633b86797?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxfHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1552728089-57bdde30beb3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyfHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1606567595334-d39972c85dbe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwzfHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1539664030485-a936c7d29c6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw0fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1551085254-e96b210db58a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw1fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1555169062-013468b47731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw2fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1591055749071-927e6ddffc82?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw3fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1480044965905-02098d419e96?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw4fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1522926193341-e9ffd686c60f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHw5fHxiaXJkfGVufDB8fHx8MTcxMzQyNzQzMXww&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1452570053594-1b985d6ea890?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxMHx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc0MzF8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1553736277-055142d018f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxMXx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc0MzF8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1497206365907-f5e630693df0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxMnx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc0MzF8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1518992028580-6d57bd80f2dd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxM3x8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1572402230267-f3e267c1e5a2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxNHx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1516233758813-a38d024919c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxNXx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1484704324500-528d0ae4dc7d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxNnx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1542382156909-9ae37b3f56fd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxN3x8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1550853024-fae8cd4be47f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxOHx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1552727451-6f5671e14d83?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwxOXx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1520808663317-647b476a81b9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyMHx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        "https://images.unsplash.com/photo-1611689342806-0863700ce1e4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyMXx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400",
+        'https://images.unsplash.com/photo-1548960095-770e3e6364de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyMnx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400',
+        'https://images.unsplash.com/photo-1613891188927-14c2774fb8d7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyM3x8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400',
+        "https://images.unsplash.com/photo-1535083783855-76ae62b2914e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NzAxNTN8MHwxfHNlYXJjaHwyNHx8YmlyZHxlbnwwfHx8fDE3MTM0Mjc1MjN8MA&ixlib=rb-4.0.3&q=80&w=400"
+    ]
+
+    let slider_running=false;
+    let btn_slide_only=false;
+    let start_stop_slide=document.getElementById("start_stop_slide");
+    let slider_container=document.getElementById("slider_container");
+    let current_photo=document.getElementById("current_photo");
+    let right_btn=document.getElementById("right");
+    let left_btn=document.getElementById("left");
+    let i=0;
+    let interval;
+   function slide(){
+     btn_slide_only=false;
+     console.log(btn_slide_only,"first")
+    if(slider_running==false && btn_slide_only==false){
+        console.log(btn_slide_only,"sec")
+        interval= setInterval(() => {
+     
+    
+     console.log(i,"first")
+     if(i!=arr.length-1 && i>=0){
+         i++;
+      
+         current_photo.src=arr[i];
+     }else if(i==arr.length-1 ){
+         i=0;
+       
+         current_photo.src=arr[i];
+     }else if(i<0){
+         i=arr.length-1;
+ 
+         current_photo.src=arr[i];
+     }
+     slider_running=true;
+
+ }, 1000);
+    }
+    else if(slider_running==true){
+        clearInterval(interval)
+        slider_running=false;
+   
+    }
+
+   
+   }
+    
+   right_btn.addEventListener("click",function(){
+      slider_running=false;
+      btn_slide_only=true;
+      clearInterval(interval)
+      console.log(btn_slide_only,"sec")
+      if(i==arr.length-1){
+             i=0;
+             current_photo.src=arr[i];
+        }else{
+            i++;
+            current_photo.src=arr[i];
+        }
+   })
+
+   left_btn.addEventListener("click",function(){
+    slider_running=false;
+    btn_slide_only=true;
+    clearInterval(interval)
+    console.log(btn_slide_only,"sec")
+        i--;
+        current_photo.src=arr[i];
+        if(i<0){
+            i=arr.length-1;
+            current_photo.src=arr[i];
+        }
+    })
+
+    
+    
+
+    
+
+</script>
+</html>
