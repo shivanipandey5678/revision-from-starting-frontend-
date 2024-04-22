@@ -1,0 +1,19 @@
+#container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    width: 70%;
+    margin: 15px auto;
+    gap: 15px;
+}
+#container_inner{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+#user_name{
+    margin-bottom: 0px;
+}
+#photo{
+    border-radius: 4px;
+}
