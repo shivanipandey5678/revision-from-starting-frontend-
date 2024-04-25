@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+       #container{
+        display: grid;
+        grid-template-columns: repeat(3,1fr);
+        margin: 80%;
+        margin: auto;
+       } 
+       .inner_cointer{
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+        height: fit-content;
+        width: 350px;
+        display: grid;
+        flex-direction: column;
+        padding: 10px;
+       
+       }
+       .inner_cointer>img{
+            margin: auto;
+            width: 80%;
+            height: 300px;
+       }
+    </style>
+    <title>index2</title>
+</head>
+<body>
+    <div id="nav_bar">
+        <input type="text" placeholder="search title wise" id="search_box">
+        <button id="search_btn" >search</button>
+        <select name="" id="sort_select">
+            <option value="Asc" id="Asc">Asc</option>
+            <option value="Des" id="Des">Des</option>
+        </select>
+    </div>
+    <div id="container"></div>
+</body>
+<script src="index2.js"></script>
+</html>
