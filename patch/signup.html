@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        form{
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+            height: 150px;
+      
+            margin: auto;
+            box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+            
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+    <title>Signup page</title>
+</head>
+<body>
+    <h1>Signup page</h1>
+    <form >
+        <input type="text" placeholder="Enter username">
+        <input type="email" placeholder="Enter your email" >
+        <input type="password" placeholder="Enter password">
+        <input type="submit" name="" id="">
+    </form>
+</body>
+<script>
+    let data=[];
+     function handlesubmit(e){
+        e.preventDefault();
+       let target=e.target;
+       let name=target[0].value;
+       let email=target[1].value;
+       let pass=target[2].value;
+       let obj={
+        name:name,
+        email:email,
+        password:pass
+       }
+       data.push(obj)
+      fetch("http://localhost:3000/users", {
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+     
+
+      })
+      .then(response => {
+        if (!response.ok) {
+            throw new Error("Network response was not ok");
+        }
+        window.location.href="login.html";
+        alert("Data pushed successfully ");
+      
+    })
+ 
+     }
+
+
+
+     let form=document.querySelector("form");
+     form.addEventListener("submit",function(event){
+        handlesubmit(event)})
+
+</script>
+</html>
